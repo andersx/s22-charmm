@@ -1,0 +1,69 @@
+* Protonated water cluster
+*
+
+bomb -5
+wrnlev -5
+set partop /home/andersx/projects/partop
+
+!read topology
+open read card unit 10 name @partop/top_all27_prot_na.rtf
+read rtf card unit 10
+close unit 10
+
+!read parameters
+open read card unit 10 name @partop/par_all27_prot_na.prm
+read param card unit 10
+close unit 10
+
+read rtf card append name @partop/top_all36_cgenff.rtf
+read para card append name @partop/par_all36_cgenff.prm
+
+! read rtf card append name /home/andersx/projects/s22/s22.rtf
+
+READ SEQUENCE AMM1 1
+GENERATE AMM1 SETUP NOANGLE NODIHEDRAL
+
+open read unit 10 card name ammonia.crd
+read coor unit 10 card append
+close unit 10
+
+READ SEQUENCE BENZ 1
+GENERATE BENZ SETUP NOANGLE NODIHEDRAL
+
+open read unit 10 card name benzene.crd
+read coor unit 10 card append
+close unit 10
+
+open unit 3 name cluster.psf write form
+write psf card unit 3
+
+open unit 3 name cluster.crd write form
+write coor card unit 3
+
+NBONDS  ATOM FSHIFT CDIE VDW VSHIFT  -
+        CUTNB 14.0 CTOFNB 12.0 CTONNB 10.0 WMIN 1.5 EPS 1.0 -
+        inbfrq -1
+
+define qm sele all end
+
+scalar WMAIN set 1.0 sele (qm) .and. type O*  end
+scalar WMAIN set 2.0 sele (qm) .and. type N*  end
+scalar WMAIN set 3.0 sele (qm) .and. type C*  end
+scalar WMAIN set 4.0 sele (qm) .and. type H*  end
+
+SCCDFTB remove SELE qm END TEMP 0.0 SCFT 1e-10 -
+        CHRG 0.0 D3RD HBON MIXE 3 THREEBOD
+
+! energy 
+
+! coor force comp
+! print coor comp
+
+mini powe nstep 1000 nprint 1
+
+open unit 3 name cluster_optimized.crd write form
+write coor card unit 3
+
+energy 
+
+stop
