@@ -7,10 +7,10 @@ SCCDFTB remove SELE qm END TEMP 0.0 SCFT 1e-10 -
 ! coor force comp
 ! print coor comp
 
-mini powe nstep 1000 nprint 1
+! mini powe nstep 1000 nprint 1
 
-open unit 3 name cluster_optimized.crd write form
-write coor card unit 3
+! open unit 3 name cluster_optimized.crd write form
+! write coor card unit 3
 
 energy 
 
