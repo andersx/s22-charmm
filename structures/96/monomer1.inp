@@ -43,7 +43,7 @@ scalar WMAIN set 1.0 sele (qm) .and. type C*  end
 scalar WMAIN set 2.0 sele (qm) .and. type H*  end
 
 SCCDFTB remove SELE qm END TEMP 0.0 SCFT 1e-10 -
-        CHRG 0.0 D3RD HBON MIXE 3 THREEBOD
+        CHRG 0.0 D3RD HBON MIXE 1 THREEBOD
 
 ! energy 
 

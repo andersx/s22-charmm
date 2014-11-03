@@ -45,6 +45,11 @@ scalar WMAIN set 2.0 sele (qm) .and. type H*  end
 SCCDFTB remove SELE qm END TEMP 0.0 SCFT 1e-10 -
         CHRG 0.0 D3RD HBON MIXE 3 THREEBOD CPE
 
+! energy 
+
+! coor force comp
+! print coor comp
+
 mini powe nstep 1000 nprint 1
 
 open unit 3 name cluster_optimized.crd write form

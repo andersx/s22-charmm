@@ -1,0 +1,13 @@
+#!/bin/bash
+
+head -n -16 monomer1.inp > temp.inp
+cat ../$1 >> temp.inp
+~/dev/charmm_cpe/exec/gnu/charmm < temp.inp | grep "ENER QUANTM>"
+
+head -n -16 monomer2.inp > temp.inp
+cat ../$1 >> temp.inp
+~/dev/charmm_cpe/exec/gnu/charmm < temp.inp | grep "ENER QUANTM>"
+
+head -n -16 complex.inp > temp.inp
+cat ../$1 >> temp.inp
+~/dev/charmm_cpe/exec/gnu/charmm < temp.inp | grep "ENER QUANTM>"

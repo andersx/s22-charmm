@@ -1,0 +1,17 @@
+
+SCCDFTB remove SELE qm END TEMP 0.0 SCFT 1e-10 -
+        CHRG 0.0 D3RD HBON MIXE 1 
+
+! energy 
+
+! coor force comp
+! print coor comp
+
+mini powe nstep 1000 nprint 1
+
+open unit 3 name cluster_optimized.crd write form
+write coor card unit 3
+
+energy 
+
+stop

@@ -1,3 +1,6 @@
 cluster.crd
 cluster.psf
 cluster_optimized.crd
+temp.inp
+test.xyz
+fort.*
