@@ -1,0 +1,23 @@
+* S22-CHARMM - github.com/andersx/s22-charmm
+*
+
+bomb -5
+wrnlev -5
+set partop /home/andersx/projects/partop
+
+! Read topology
+open read card unit 10 name @partop/top_all27_prot_na.rtf
+read rtf card unit 10
+close unit 10
+
+! Read parameters
+open read card unit 10 name @partop/par_all27_prot_na.prm
+read param card unit 10
+close unit 10
+
+! Read CGENFF stuff
+read rtf card append name @partop/top_all36_cgenff.rtf
+read para card append name @partop/par_all36_cgenff.prm
+
+! Read in extra molecules for S22-CHARMM
+read rtf card append name /home/andersx/projects/s22/s22.rtf

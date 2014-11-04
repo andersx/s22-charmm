@@ -4,3 +4,4 @@ cluster_optimized.crd
 temp.inp
 test.xyz
 fort.*
+*.pyc
