@@ -21,11 +21,12 @@ def get_energy(s22_id, footer):
     return e_interaction
 
 
-#footer = "foot_test.inp"
-#footer = "foot_dftb3.inp"
-#footer = "foot_dftb3-d3.inp"
-#footer = "foot_cpe-dftb3.inp"
-footer = "foot_cpe-dftb3-d3.inp"
+# footer = "foot_test.inp"
+# footer = "foot_dftb3.inp"
+# footer = "foot_dftb3-d3.inp"
+# footer = "foot_cpe-dftb3.inp"
+# footer = "foot_cpe-dftb3-d3.inp"
+footer = "foot_test-cpe.inp"
 
 e_list = []
 de_list = []
@@ -47,7 +48,9 @@ de_list = np.array(de_list)
 
 print "Max AE  [kcal/mol]  %6.2f" % np.amax(abs(de_list))
 print "RMSD    [kcal/mol]  %6.2f" % np.sqrt(np.sum(de_list**2.0)/len(de_list))
-print "MAD     [kcal/mol]  %6.2f" % np.average(de_list)
+print "Mean     [kcal/mol]  %6.2f" % np.average(de_list)
+print "MAD     [kcal/mol]  %6.2f" % np.average(abs(de_list))
+print "MAD     [kcal/mol]  %6.2f" % np.mean(abs(de_list))
 
 
 
